@@ -1,9 +1,17 @@
 from flask import Flask, render_template
-from home import home
+
+app = Flask(__name__)
 
 
-app = Flask(__name__, static_folder = "../frontend/static", template_folder = "../frontend")
-app.register_blueprint(home)
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+
+@app.route("/get-dep")
+def get_dep():
+    return "Hello from the backend!"
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000, debug=True)
