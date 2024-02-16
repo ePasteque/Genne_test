@@ -1,5 +1,5 @@
 # Project Name
-NAME = Geenee_test_project 
+NAME =genee_test_project 
 
 # Operating System Detection
 UNAME_S := $(shell uname -s)
@@ -89,4 +89,28 @@ fclean: down
 # Rebuild and Restart Everything
 re: fclean all
 
-.PHONY: all re up down build start restart stop fclean images ps check-docker update_env prune
+# Create individual container
+create-db:
+	$(COMPOSE) up -d db
+
+create-backend:
+	$(COMPOSE) up -d backend
+
+create-frontend:
+	$(COMPOSE) up -d frontend
+
+# Delete individual container
+delete-db:
+	$(COMPOSE) stop db
+	$(COMPOSE) rm -f db
+
+delete-backend:
+	$(COMPOSE) stop backend
+	$(COMPOSE) rm -f backend
+
+delete-frontend:
+	$(COMPOSE) stop frontend
+	$(COMPOSE) rm -f frontend
+
+
+.PHONY: all re up down build start restart stop fclean images ps check-docker update_env prune create-db create-backend create-frontend

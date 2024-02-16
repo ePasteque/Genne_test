@@ -33,6 +33,9 @@ services:
       - db
     networks:
       - app_network
+    tty: true
+    stdin_open: true
+    command: /bin/bash
 
   # Frontend Service (React/Vue/Angular)
   frontend:
@@ -46,8 +49,8 @@ services:
       - "3000:3000"
     networks:
       - app_network
-    depends_on:
-      - backend
+    # depends_on:
+    #   - backend
 
 networks:
   app_network:
