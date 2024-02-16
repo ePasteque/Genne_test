@@ -1,1 +1,6 @@
 flask>=3.0
+jupyter
+pandas
+python-decouple
+dask[dataframe]
+dask-expr
