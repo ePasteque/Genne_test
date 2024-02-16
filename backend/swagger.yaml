@@ -1,0 +1,27 @@
+# swagger.yml
+
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      tags:
+        - "root"
+      summary: "Root endpoint"
+      responses:
+        "200":
+          description: "Root endpoint"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    example: "Welcome to the Genee Flask REST API"
+info:
+  title: "Genee Flask REST API"
+  description: "An API about people and notes"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
